@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.mycss {
+    color: rgb(237, 255, 232);
+}
+
+.mycss2 {
+    color: rgb(0, 0, 0);
+    
+}
+
+.mycss3 {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+
+.mycss4 {
+    color: rgb(0, 0, 0);
+}
+
+.mycss5 {
+    color: rgb(0, 0, 0);
+    font-size: 35px;
+    margin-right: 5px;
+    margin-left: 50px;
+    position: relative; right: 1%;
+    width: 120%;
+    }
+
+    .mycss6 {
+        color: rgb(0, 0, 0);
+        font-size: 38px;
+    }
+    
+
+
+
+.navbar a {
+
+    color: rgb(0, 0, 0);
+   
+}
+
+
+.navbar a:hover {
+    background-color: rgb(240, 201, 242);
+}
+
+
+.navbar {
+    background-color: rgb(255, 255, 255);
+    height: 70px !important;
+    display: flex;
+    justify-content: center;
+  }
+
+ 
+  .nav-link {
+    color: rgb(0, 0, 0);
+    font-size: 30px !important;
+    line-height: 50px !important;
+    margin: 0 20px; 
+  }
+
+  .navbar a.home-link {
+    color: rgb(0,0,0);
+}
+
+.horizontal-line {
+    border-top:3px solid black; 
+    border-bottom: 3px solid black;
+    color: black;
+    margin: 0;
+  }
