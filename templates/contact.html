@@ -1,21 +1,61 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block rowOneContent %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col text-center">
-      <h1 class="mycss2">Contact Us</h1>
-      <p class="fw-bold mycss6" style="margin-top: 30px;">For general inquiries, please contact us at:</p>
-      <p class="mycss6">Email: happyhedgehogfacepainting@gmail.com</p>
-      <p class="mycss6">Phone: (123) 456-7890</p>
-      <p class="fw-bold mycss6">Our office hours are:</p>
-      <p class="mycss6">Monday - Friday: 8:00 AM - 3:00 PM</p>
-      <p class="mycss6">Saturday - Sunday: 10:00 AM - 5:00 PM </p>
-      <p class="fw-bold mycss6">Connect with us on social media:</p>
-      <p class="mycss6">Facebook: <a href="https://www.facebook.com/profile.php?id=100091523089017">Our Facebook Group</a></p>
-      <p class="mycss6">Twitter: <a href="https://twitter.com/example">Example</a></p>
-      <p class="mycss6">Instagram: <a href="https://www.instagram.com/example">Example</a></p>
+{# Block for the sidebar content #}
+{% block rowTwoColOneContent %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="mycss2">Contact Us</h1>
+                <p class="fw-bold mycss6" style="margin-top: 30px;">For general inquiries, please contact us at:</p>
+                <p class="mycss6">Email: happyhedgehogfacepainting@gmail.com</p>
+                <p class="mycss6">Phone: (123) 456-7890</p>
+                <p class="fw-bold mycss6">Our office hours are:</p>
+                <p class="mycss6">Monday - Friday: 8:00 AM - 3:00 PM</p>
+                <p class="mycss6">Saturday - Sunday: 10:00 AM - 5:00 PM</p>
+                <p class="fw-bold mycss6">Connect with us on social media:</p>
+                <p class="mycss6">Facebook: <a href="https://www.facebook.com/profile.php?id=100091523089017">Our Facebook Group</a></p>
+                <p class="mycss6">Twitter: <a href="https://twitter.com/example">Example</a></p>
+                <p class="mycss6">Instagram: <a href="https://www.instagram.com/example">Example</a></p>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 {% endblock %}
+
+{# Block for the main form content #}
+{% block rowTwoColTwoContent %}
+<h2 class="text-center mb-4">Or Use The Contact Form:</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=70, class="form-control") }}<br>
+            {% for error in form.name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=70, class="form-control") }}<br>
+            {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.message.label }}<br>
+            {{ form.message(size=70, class="form-control") }}<br>
+            {% for error in form.message.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+
+{# Block for the footer content #}
+{% block cellContent3 %}
+    Footer
+{% endblock %}
+
+
+
+
