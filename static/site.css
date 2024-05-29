@@ -74,3 +74,17 @@ body {
     color: black;
     margin: 0;
   }
+
+
+  .flashes {
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border: 2px solid rgb(150, 136, 136);
+    background-color: rgb(249, 206, 240);
+    color: rgb(0, 0, 0);
+    text-align: center; /* Centers the text horizontally */
+}
+
+}

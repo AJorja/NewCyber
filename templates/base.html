@@ -20,7 +20,8 @@
 
 
 
-  <section class="section-above-navbar" style="background-image: url('/static/images/TopPage.jpg'); background-size: contain; background-position: center; padding: 10px 0; height: 100px;  margin-bottom: 1px;">
+  <section class="section-above-navbar"
+    style="background-image: url('/static/images/TopPage.jpg'); background-size: contain; background-position: center; padding: 10px 0; height: 100px;  margin-bottom: 1px;">
     <div class="container-fluid h-100">
       <div class="row align-items-center justify-content-between h-100">
         <div class="col-md-auto d-flex align-items-center">
@@ -33,7 +34,7 @@
       </div>
     </div>
   </section>
- 
+
   <hr class="horizontal-line" />
 
 
@@ -51,10 +52,30 @@
           <a class="nav-link" href="/about">About Us</a>
           <a class="nav-link" href="/contact">Contact Us</a>
           <a class="nav-link" href="/photogallery">Photo Gallery</a>
+          {% if user.is_anonymous %}
+          <a class="nav-link" href="/register">Registration</a>
+          <a class="nav-link" href="/login">Login</a>
+        {% else %}
+          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" href="/passwordreset">Password Reset</a>
+          {% if user.is_admin() %}
+          <li><a class="nav-link" href="/contact_messages">Contact Messages</a></li>
+          <li><a class="nav-link" href="/admin/list_all_users">List all Users</a></li>
+        {% endif %}
+      {% endif %}
         </div>
       </div>
     </div>
   </nav>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <li><div class="focus">{{ message }}</div></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
 
 
 
