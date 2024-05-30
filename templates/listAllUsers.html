@@ -1,33 +1,61 @@
 {% extends 'base.html' %}
 
-{# Place the content for the cellContent1 in this block #}
 {% block rowOneContent %}
 
 {% endblock %}
 
 {% block rowTwoColOneContent %}
-  
+<div class="container-fluid">
+    {% for user in users %}
+        <div class="row user-row">
+            <div class="col-md-12 user-email"><h4>{{ user.email_address }}</h4></div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
 
 {% block rowTwoColTwoContent %}
+<style>
+    .user-row h4 {
+        font-size: 25px; /* Adjust font size for individual headers */
+    }
+    .btn-light-pink {
+        font-size: 25px;
+        background-color: #FFC0CB; /* Light pink color */
+        color: #fff; /* Text color */
+        border-color: #FFC0CB; /* Border color */
+    }
+    .btn-light-pink:hover {
+        font-size: 25px;
+        background-color: #FFB6C1; /* Light pink color on hover */
+        border-color: #FFB6C1; /* Border color on hover */
+    }
+    .status-light-pink {
+        font-size: 28px;
+        background-color: #FFC0CB; /* Pink background color for status */
+        color: #FFF; /* White text color for status */
+        padding: 5px 10px; /* Add padding for spacing */
+        border-radius: 5px; /* Add border radius for rounded corners */
+        display: inline-block; /* Ensure background color is only as long as the text */
+    }
+</style>
 <div class="container-fluid">
     {% for user in users %}
-        <div class="row">
-            <div class="col-md-4">{{ user.email_address }}</div>
-            <div class="col-md-4"><a href="/reset_password/{{ user.id }}">Reset Password</a></div>
-            <div class="col-md-3">
+        <div class="row user-row">
+            <div class="col-md-12 user-reset"><h4><a href="/reset_password/{{ user.id }}" class="btn btn-light-pink">Reset Password</a></h4></div>
+            <div class="col-md-12 user-enable-disable"><h4><a href="/admin/user_enable/{{ user.id }}" class="btn btn-light-pink">Enable/Disable Account</a></h4></div>
+            <div class="col-md-12 user-status">
                 {% if user.active %}
-                    Enabled
+                    <h4 class="status-light-pink">Enabled</h4>
                 {% else %}
-                    Disabled
+                    <h4 class="status-light-pink">Disabled</h4>
                 {% endif %}
             </div>
-            <div class="col-md-3"><a href="/admin/user_enable/{{ user.id }}">Enable/Disable Account</a></div>
         </div>
     {% endfor %}
 </div>
 {% endblock %}
 
 {% block rowThreeContent %}
-  <div class="footerText">Copyright 2024.</div>
+  <div class="footerText"><h4>Copyright 2024.</h4></div>
 {% endblock %}

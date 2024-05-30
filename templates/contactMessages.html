@@ -1,51 +1,42 @@
 {% extends "base.html" %}
 
-
 {% block rowOneContent %}
-
-
-
-
+<div class="footerText bigger-text2">User Contact Messages</div>
 {% endblock %}
-
 
 {% block rowTwoColOneContent %}
-<p class="mycss5" style="margin-top: 100px;">In pharetra lacus quis. Quam iaculis facilisi parturient vitae, nam nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>          
-<p class="mycss5" style="margin-top: 20px;">Blandit  maecenas cum libero dignissim libero tristique purus ornare. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum .</p>
+    <div class="footerText bigger-text">{{ name }}</div>
 {% endblock %}
-
-
-
 
 {% block rowTwoColTwoContent %}
 <div class="container-fluid">
     {% for message in messages %}
-    <div class="row">
-        <div class="col-3"> {{ message.name }}</div>
-        <div class="col-3"> {{ message.email }}</div>
-        <div class="col-3"> {{ message.message }}</div>
-        <div class="col-3"> {{ message.dateSubmitted }}</div>
+    <div class="row message-row">
+        <div class="col-2 bigger-text">{{ message.name }}</div>
+        <div class="col-5 bigger-text">{{ message.message }}</div>
+        <div class="col-3 bigger-text">{{ message.dateSubmitted }}</div>
     </div>
     {% endfor %}
 </div>
 {% endblock %}
 
-
 {% block rowTwoColThreeContent %}
-
-
-<p class="fw-bold mycss3" style="font-size: 35px; color: white; position: absolute; top: 570px; right: 270px;"></p>
-   
-
-
+<div class="container-fluid">
+    {% for message in messages %}
+    <div class="row message-row">
+        <div class="col-2 bigger-text">{{ message.email }}</div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
-
-
-
 
 {% block rowThreeContent %}
-<p class="fw-light mycss4" style="margin-top: 100px; margin-left: 40px;">Copyright @2024</p>
+<div>Copyright 2024.</div>
 {% endblock %}
+
+
+
+
 
 
 
