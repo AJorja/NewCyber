@@ -132,3 +132,38 @@ a:hover {
   background-color: #2d8f2d;
   border-color: #1f5c1f;
 }
+
+
+/* Background for expanded navbar on small screens */
+.collapse.show {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00FF00;
+  box-shadow: 0 0 15px #00FF00;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Make sure nav links inside are still green and readable */
+.collapse.show .nav-link {
+  color: #00FF00 !important;
+  font-weight: 600;
+  text-shadow: 0 0 8px #00FF00;
+  background: transparent;
+  border-radius: 5px;
+  margin: 5px 0;
+  display: block;  /* so links stack nicely */
+  font-size: 18px;
+}
+
+.collapse.show .nav-link:hover {
+  color: #32CD32 !important;
+  text-shadow: 0 0 15px #32CD32;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300FF00' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
