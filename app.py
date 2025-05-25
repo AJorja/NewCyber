@@ -12,7 +12,9 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 from forms import ContactForm, RegistrationForm, LoginForm, ResetPasswordForm
-from models import Contact, User, Challenge
+from models import Contact, User, Challenge, ChallengeCompletion
+from datetime import datetime
+
 
 
 @app.route('/')
@@ -97,31 +99,39 @@ def challenges():
     return render_template("challenges.html", title="Challenges", challenges=challenges_list, user=current_user)
 
 
-@app.route('/challenge/<int:challenge_id>', methods=['GET', 'POST'])
-@login_required  # Require login to submit flags and earn points
+@app.route("/challenge/<int:challenge_id>", methods=["GET", "POST"])
+@login_required
 def challenge_page(challenge_id):
-    from models import Challenge, User  # local import if needed
-
     challenge = Challenge.query.get_or_404(challenge_id)
     message = None
 
-    if request.method == 'POST':
-        submitted_flag = request.form.get('flag')
+    # Check if user has already completed this challenge
+    already_done = ChallengeCompletion.query.filter_by(
+        user_id=current_user.id, challenge_id=challenge.id
+    ).first()
 
-        if submitted_flag == challenge.flag:
-            message = "🎉 Correct flag! Challenge complete."
+    if request.method == "POST":
+        submitted_flag = request.form["flag"].strip()
 
-            # Example: add points to user, adjust as needed
-            current_user.score = (current_user.score or 0) + 10
+        if already_done:
+            message = "You've already completed this challenge!"
+        elif submitted_flag == challenge.flag:
+            # Add to completion table
+            completion = ChallengeCompletion(
+                user_id=current_user.id,
+                challenge_id=challenge.id,
+                timestamp=datetime.utcnow()
+            )
+            db.session.add(completion)
+
+            # Optionally add points to user (if using a score)
+            current_user.score += challenge.points
             db.session.commit()
-
-            flash(message, 'success')
+            flash("🎉 Correct! Challenge completed! 🎉", "success")
         else:
-            message = "❌ Incorrect flag, try again."
-            flash(message, 'danger')
+            flash("❌ Incorrect flag. Try again.", "danger")
 
-    return render_template('turbine.html', challenge=challenge, message=message, user=current_user)
-
+    return render_template("turbine.html", challenge=challenge, message=message, user=current_user)
 
 
 

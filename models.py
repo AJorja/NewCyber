@@ -23,6 +23,13 @@ class Challenge(db.Model):
     description = db.Column(db.Text)
     hint = db.Column(db.Text)
     flag = db.Column(db.String(255))
+    points = db.Column(db.Integer, default=100)
+
+class ChallengeCompletion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    challenge_id = db.Column(db.Integer, db.ForeignKey('challenge.id'), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 class User(UserMixin, db.Model):
