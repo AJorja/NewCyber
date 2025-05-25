@@ -99,3 +99,36 @@ a:hover {
 .danger {
     color: red;
 }
+
+
+/* Black and Green themed alert box */
+.alert-green-black {
+  background-color: #0b3d0b;   /* dark green background */
+  color: #a8ffb0;              /* light green text */
+  border: 1px solid #3db53d;  /* bright green border */
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 1em;
+}
+
+.alert-green-black a {
+  color: #c4ffc4;              /* lighter green for links */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.alert-green-black a:hover {
+  color: #e0ffe0;
+  text-decoration: none;
+}
+
+/* Optional: style the submit button consistently */
+.btn-success {
+  background-color: #3db53d;
+  border-color: #2d8f2d;
+}
+
+.btn-success:hover {
+  background-color: #2d8f2d;
+  border-color: #1f5c1f;
+}

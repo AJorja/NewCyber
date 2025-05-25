@@ -4,13 +4,26 @@
 <h2>{{ challenge.challengeTitle }}</h2>
 <p>{{ challenge.description }}</p>
 
-<form method="POST" action="{{ url_for('challenge_page', challenge_id=challenge.id) }}">
-  <label for="flag">Submit Flag:</label>
-  <input type="text" id="flag" name="flag" required>
-  <button type="submit">Submit</button>
+{% if challenge.hint %}
+  <div class="alert-green-black">
+    <strong>Hint:</strong> {{ challenge.hint }}
+  </div>
+{% endif %}
+
+<div class="alert-green-black">
+  <strong>File:</strong> 
+  <a href="https://drive.google.com/file/d/124hrEmiFBhbndlku0C_PLhxyedy0A3og/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+    Download backup file
+  </a>
+</div>
+
+<form method="POST" action="{{ url_for('challenge_page', challenge_id=challenge.id) }}" style="margin-top: 1em;">
+  <label for="flag">Submit Flag:</label><br>
+  <input type="text" id="flag" name="flag" required style="padding: 8px; width: 250px; border-radius: 4px; border: 1px solid #3db53d; background-color: #000; color: #a8ffb0;">
+  <button type="submit" class="btn btn-success" style="margin-left: 10px;">Submit</button>
 </form>
 
 {% if message %}
-  <p>{{ message }}</p>
+  <p style="margin-top: 1em; color: #a8ffb0;">{{ message }}</p>
 {% endif %}
 {% endblock %}
