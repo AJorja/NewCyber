@@ -3,6 +3,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import current_user, login_user, LoginManager, logout_user, login_required
 
+
+
 app = Flask(__name__)
 app.config.from_object(Config)  # loads the configuration for the database
 db = SQLAlchemy(app)  # creates the db object using the configuration
@@ -10,12 +12,18 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 from forms import ContactForm, RegistrationForm, LoginForm, ResetPasswordForm
-from models import Contact, User
+from models import Contact, User, Challenge
 
 
 @app.route('/')
 def homepage():  
     return render_template("index.html", title="Homepage", user=current_user)
+
+@app.route('/leaderboard')
+def leaderboard():
+    # Example: get top 10 users sorted by score descending
+    users = User.query.order_by(User.score.desc()).limit(10).all()
+    return render_template("leaderboard.html", title="Leaderboard", users=users, user=current_user)
 
 @app.route('/about')
 def about():  
@@ -82,6 +90,48 @@ def reset_password():
         flash("Your password has been changed.")
         return redirect(url_for('homepage'))
     return render_template("passwordreset.html", title='Reset Password', form=form, user=current_user)
+
+@app.route('/challenges')
+def challenges():
+    challenges_list = Challenge.query.all()
+    return render_template("challenges.html", title="Challenges", challenges=challenges_list, user=current_user)
+
+
+@app.route('/challenge/<int:challenge_id>', methods=['GET', 'POST'])
+@login_required  # Require login to submit flags and earn points
+def challenge_page(challenge_id):
+    from models import Challenge, User  # local import if needed
+
+    challenge = Challenge.query.get_or_404(challenge_id)
+    message = None
+
+    if request.method == 'POST':
+        submitted_flag = request.form.get('flag')
+
+        if submitted_flag == challenge.flag:
+            message = "🎉 Correct flag! Challenge complete."
+
+            # Example: add points to user, adjust as needed
+            current_user.score = (current_user.score or 0) + 10
+            db.session.commit()
+
+            flash(message, 'success')
+        else:
+            message = "❌ Incorrect flag, try again."
+            flash(message, 'danger')
+
+    return render_template('turbine.html', challenge=challenge, message=message, user=current_user)
+
+
+
+
+
+
+@app.route('/rules')
+def rules():
+    # Just render the rules template for now
+    return render_template("rules.html", title="Rules", user=current_user)
+
 
 # Error Handlers
 @app.errorhandler(404)

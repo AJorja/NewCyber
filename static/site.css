@@ -1,115 +1,101 @@
+/* Base body and text colors */
 body {
-    background-color: rgb(255, 255, 255);
+  background-color: #000000;
+  color: #00FF00;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
 }
 
-.mycss {
-    color: rgb(237, 255, 232);
+/* Headings and text */
+h1, h2, h3, p, ul, li {
+  color: #00FF00;
 }
 
-.mycss2 {
-    color: rgb(0, 0, 0);
-    
+ul {
+  list-style-type: square;
+  padding-left: 20px;
 }
 
-.mycss3 {
-    color: rgb(0, 0, 0);
-    font-size: 25px;
-}
-
-.mycss4 {
-    color: rgb(0, 0, 0);
-}
-
-.mycss5 {
-    color: rgb(0, 0, 0);
-    font-size: 35px;
-    margin-right: 5px;
-    margin-left: 50px;
-    position: relative; right: 1%;
-    width: 120%;
-    }
-
-    .mycss6 {
-        color: rgb(0, 0, 0);
-        font-size: 38px;
-    }
-    
-
-
-
-.navbar a {
-
-    color: rgb(0, 0, 0);
-   
-}
-
-
-.navbar a:hover {
-    background-color: rgb(240, 201, 242);
-}
-
-
+/* Navbar styles */
 .navbar {
-    background-color: rgb(255, 255, 255);
-    height: 70px !important;
-    display: flex;
-    justify-content: center;
-  }
-
- 
-  .nav-link {
-    color: rgb(0, 0, 0);
-    font-size: 30px !important;
-    line-height: 50px !important;
-    margin: 0 20px; 
-  }
-
-  .navbar a.home-link {
-    color: rgb(0,0,0);
+  background-color: #000000 !important;
+  height: 70px !important;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #00FF00;
 }
 
-.horizontal-line {
-    border-top:3px solid black; 
-    border-bottom: 3px solid black;
-    color: black;
-    margin: 0;
-  }
-
-
-  .flashes {
-    padding: 10px;
-    border-radius: 3px;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    border: 2px solid rgb(150, 136, 136);
-    background-color: #FFC0CB;
-    color: rgb(0, 0, 0);
-    text-align: center; 
+.navbar a.nav-link {
+  color: #00FF00 !important;
+  font-size: 20px !important;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #00FF00;
+  font-weight: 600;
 }
 
-.message-row {
-    margin-bottom: 20px; 
+.navbar a.nav-link:hover {
+  color: #32CD32 !important;
+  text-shadow: 0 0 15px #32CD32;
+  background-color: rgba(0, 255, 0, 0.1);
+  border-radius: 5px;
 }
 
-.bigger-text {
-    font-size: 25px; 
-    color: #f6a1af; 
-     
-        
+/* Flashes / notifications */
+.flashes {
+  background-color: #003300;
+  border: 2px solid #00FF00;
+  color: #00FF00;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
-.bigger-text2 {
-    font-size: 25px; 
-     
-        
-}
-
-
+/* Focus flash style */
 .focus {
-    font-size: 25px;
-        background-color: #FFC0CB;
-        color: #FFF; 
-        padding: 5px 10px; 
-        border-radius: 5px; 
-        display: inline-block;
+  font-size: 25px;
+  background-color: #003300;
+  color: #00FF00;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  text-shadow: 0 0 7px #00FF00;
+}
+
+/* Horizontal lines */
+.horizontal-line {
+  border-top: 3px solid #00FF00;
+  border-bottom: 3px solid #00FF00;
+  color: #00FF00;
+  margin: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Links inside page content */
+a {
+  color: #00FF00;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #32CD32;
+  text-shadow: 0 0 10px #32CD32;
+  text-decoration: underline;
+}
+
+
+.success {
+    color: green;
+}
+.danger {
+    color: red;
 }

@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>{{ title }}</title>
   <link rel="stylesheet" href="/static/css/bootstrap.css" />
   <script src="/static/js/bootstrap.js"></script>
   <link rel="stylesheet" href="/static/site.css" />
 </head>
 
-
-
-
 <body>
 
-
-
-
+  <!-- Top header (optional, you can remove or customize) -->
   <section class="section-above-navbar"
-    style="background-image: url('/static/images/TopPage.jpg'); background-size: contain; background-position: center; padding: 10px 0; height: 100px;  margin-bottom: 1px;">
+    style="background-color: #000; padding: 10px 0; height: 80px; margin-bottom: 1px;">
     <div class="container-fluid h-100">
       <div class="row align-items-center justify-content-between h-100">
         <div class="col-md-auto d-flex align-items-center">
-          <img src="/static/images/logo.png" alt="Logo" class="img-fluid" style="max-width: 4vw; height: auto;">
-          <p class="fs-5 mb-0 ms-2">Happy Hedgehog Face Painting & Parties</p>
+          <!-- Replace with a CTF logo or text -->
+          <img src="/static/images/logo1.png" alt="Logo" class="img-fluid" style="max-width: 4vw; height: auto; filter: brightness(1) invert(0);" />
+          <p class="fs-5 mb-0 ms-2" style="color: #00FF00; font-family: monospace; font-weight: bold;">CyberCity2025</p>
         </div>
         <div class="col-md-auto">
-          <p class="fs-5 mb-0 text-end">Contact Us At: happyhedgehogfacepainting@gmail.com</p>
+          <p class="fs-5 mb-0 text-end" style="color: #00FF00; font-family: monospace;">contact@CyberCity2025.com</p>
         </div>
       </div>
     </div>
@@ -37,111 +30,68 @@
 
   <hr class="horizontal-line" />
 
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 255, 255);">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav text-center">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
-          <a class="nav-link" href="/about">About Us</a>
-          <a class="nav-link" href="/contact">Contact Us</a>
-          <a class="nav-link" href="/photogallery">Photo Gallery</a>
+          <a class="nav-link" href="/challenges">Challenges</a>
+          <a class="nav-link" href="/leaderboard">Leaderboard</a>
+          <a class="nav-link" href="/rules">Rules</a>
           {% if user.is_anonymous %}
-          <a class="nav-link" href="/register">Registration</a>
+          <a class="nav-link" href="/register">Register</a>
           <a class="nav-link" href="/login">Login</a>
-        {% else %}
+          {% else %}
           <a class="nav-link" href="/logout">Logout</a>
-          <a class="nav-link" href="/passwordreset">Password Reset</a>
-          {% if user.is_admin() %}
-          <li><a class="nav-link" href="/contact_messages">Contact Messages</a></li>
-          <li><a class="nav-link" href="/admin/list_all_users">List all Users</a></li>
-        {% endif %}
-      {% endif %}
+          {% endif %}
         </div>
       </div>
     </div>
   </nav>
+
   {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-                <li><div class="focus">{{ message }}</div></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-
-
-
+  {% if messages %}
+  <ul class="flashes">
+    {% for message in messages %}
+    <li><div class="focus">{{ message }}</div></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
 
   <hr class="horizontal-line" />
 
-
-
-
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding: 20px 40px;">
     <div class="row">
       <div class="col">
-        {% block rowOneContent %}
-        {% endblock %}
+        {% block rowOneContent %}{% endblock %}
       </div>
     </div>
 
-
-
-
-    <div class="row">
+    <div class="row" style="margin-top: 30px;">
       <div class="col">
-        {% block rowTwoColOneContent %}
-        {% endblock %}
+        {% block rowTwoColOneContent %}{% endblock %}
       </div>
-
-
-
-
       <div class="col-sm-4">
-        {% block rowTwoColTwoContent %}
-        {% endblock %}
+        {% block rowTwoColTwoContent %}{% endblock %}
       </div>
-
-
-
-
       <div class="col-sm-4">
-        {% block rowTwoColThreeContent %}
-        {% endblock %}
+        {% block rowTwoColThreeContent %}{% endblock %}
       </div>
     </div>
 
-
-
-
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
       <div class="col-12">
-        {% block rowThreeContent %}
-        {% endblock %}
+        {% block rowThreeContent %}{% endblock %}
       </div>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
 </body>
-
-
-
 
 </html>

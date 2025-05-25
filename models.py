@@ -17,6 +17,13 @@ class Contact(db.Model):
         self.message = message
         self.dateSubmitted = datetime.today()
 
+class Challenge(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    challengeTitle = db.Column(db.String(255))
+    description = db.Column(db.Text)
+    hint = db.Column(db.Text)
+    flag = db.Column(db.String(255))
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +31,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
     user_level = db.Column(db.Integer)
+    score = db.Column(db.Integer, default=0)
     active = db.Column(db.Boolean)
 
     def set_password (self, password):
@@ -41,6 +49,9 @@ class User(UserMixin, db.Model):
     def update_details(self, email_address, name):
         self.email_address = email_address
         self.name = name
+
+from app import db
+
 
 @login.user_loader
 def load_user(id):

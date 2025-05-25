@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block rowOneContent %}
+<h2>{{ challenge.challengeTitle }}</h2>
+<p>{{ challenge.description }}</p>
+
+<form method="POST" action="{{ url_for('challenge_page', challenge_id=challenge.id) }}">
+  <label for="flag">Submit Flag:</label>
+  <input type="text" id="flag" name="flag" required>
+  <button type="submit">Submit</button>
+</form>
+
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+{% endblock %}
