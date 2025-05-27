@@ -1,18 +1,9 @@
 {% extends 'base.html' %}
 
-{# Place the content for the cellContent1 in this block #}
-{% block rowTwoColOneContent %}
-    Sidebar
-{% endblock %}
-
-{# Place the content for the cellContent2 in this block #}
 {% block rowTwoColTwoContent %}
-<div class="alert alert-danger" role="alert">
-    Error Page Not Found!
-  </div>
-{% endblock %}
-
-{# Place the content for the cellContent3 in this block #}
-{% block cellContent3 %}
-    Footer
+<div class="error-container">
+    <h1 class="neon-text">404 - Page Not Found</h1>
+    <p class="neon-subtext">Oops! The page you’re looking for doesn't exist.</p>
+    <a href="{{ url_for('homepage') }}" class="neon-button">Back to Homepage</a>
+</div>
 {% endblock %}

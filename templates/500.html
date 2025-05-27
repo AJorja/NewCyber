@@ -1,18 +1,8 @@
 {% extends 'base.html' %}
 
-{# Place the content for the cellContent1 in this block #}
-{% block rowTwoColOneContent %}
-    Sidebar
-{% endblock %}
-
-{# Place the content for the cellContent2 in this block #}
 {% block rowTwoColTwoContent %}
-<div class="alert alert-danger" role="alert">
-    Internal Service Error!
-  </div>
-{% endblock %}
-
-{# Place the content for the cellContent3 in this block #}
-{% block cellContent3 %}
-    Footer
+<div class="error-container">
+    <h1 class="neon-text">Internal Service Error!</h1>
+    <p class="neon-subtext">Sorry, something went wrong on our end. Please try again later.</p>
+</div>
 {% endblock %}

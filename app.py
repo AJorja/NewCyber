@@ -27,10 +27,6 @@ def leaderboard():
     users = User.query.order_by(User.score.desc()).limit(10).all()
     return render_template("leaderboard.html", title="Leaderboard", users=users, user=current_user)
 
-@app.route('/about')
-def about():  
-    return render_template("about.html", title="About Us", user=current_user)
-
 @app.route("/contact", methods=["POST", "GET"])
 def contact():
     form = ContactForm()
@@ -41,11 +37,6 @@ def contact():
         flash("Your message has been sent to administrators.")
         return redirect(url_for("homepage"))
     return render_template("contact.html", title="Contact Us", form=form, user=current_user)
-
-
-@app.route('/photogallery') 
-def photogallery(): 
-    return render_template("photogallery.html", title="Photo Gallery", user=current_user)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -147,7 +138,6 @@ def rules():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html", user=current_user), 404
-
 
 @app.errorhandler(500)
 def internal_server_error(e):
