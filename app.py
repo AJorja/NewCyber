@@ -122,7 +122,7 @@ def challenge_page(challenge_id):
         else:
             flash("❌ Incorrect flag. Try again.", "danger")
 
-    return render_template("turbine.html", challenge=challenge, message=message, user=current_user)
+    return render_template("challenge.html", challenge=challenge, message=message, user=current_user)
 
 
 

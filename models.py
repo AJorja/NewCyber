@@ -24,6 +24,7 @@ class Challenge(db.Model):
     hint = db.Column(db.Text)
     flag = db.Column(db.String(255))
     points = db.Column(db.Integer, default=100)
+    file_url = db.Column(db.String(255))
 
 class ChallengeCompletion(db.Model):
     id = db.Column(db.Integer, primary_key=True)

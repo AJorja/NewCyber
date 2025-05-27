@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 
 {% block rowOneContent %}
-<h2>Challenges</h2>
-<ul>
-    {% for challenge in challenges %}
-        <li>
-            <strong><a href="{{ url_for('challenge_page', challenge_id=challenge.id) }}">{{ challenge.challengeTitle }}</a></strong>: {{ challenge.description }}
-        </li>
-    {% endfor %}
-</ul>
+<h2 style="color: #39ff14;">Challenges</h2>
+
+<div class="row">
+  {% for challenge in challenges %}
+  <div class="col-md-6 mb-4">
+    <div class="card h-100 shadow-sm" style="background-color: #000000; border: 1px solid #39ff14; color: #39ff14;">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">
+          <a href="{{ url_for('challenge_page', challenge_id=challenge.id) }}" style="color: #39ff14; text-shadow: 0 0 8px #39ff14;">
+            {{ challenge.challengeTitle }}
+          </a>
+        </h5>
+        <p class="card-text" style="color: #39ff14;">{{ challenge.description }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 {% endblock %}
