@@ -34,28 +34,35 @@
   <hr class="horizontal-line" />
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+ <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-        <div class="navbar-nav text-center">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-          <a class="nav-link" href="/challenges">Challenges</a>
-          <a class="nav-link" href="/leaderboard">Leaderboard</a>
-          <a class="nav-link" href="/rules">Rules</a>
-          {% if user.is_anonymous %}
+    <span class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+      <div class="navbar-nav text-center">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <a class="nav-link" href="/challenges">Challenges</a>
+        <a class="nav-link" href="/leaderboard">Leaderboard</a>
+        <a class="nav-link" href="/rules">Rules</a>
+        <a class="nav-link" href="/contact">Contact</a>
+
+        {% if user.is_anonymous %}
           <a class="nav-link" href="/register">Register</a>
           <a class="nav-link" href="/login">Login</a>
-          {% else %}
-          <a class="nav-link" href="/logout">Logout</a>
+        {% else %}
+          {% if user.is_admin() %}
+            <a class="nav-link" href="{{ url_for('view_contact_messages') }}">Contact Messages</a>
+            <a class="nav-link" href="{{ url_for('list_all_users') }}">All Users</a>
+            <a class="nav-link" href="{{ url_for('reset_password', userid=user.id) }}">Reset Password</a>
           {% endif %}
-        </div>
+          <a class="nav-link" href="/logout">Logout</a>
+        {% endif %}
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
   {% with messages = get_flashed_messages() %}
   {% if messages %}

@@ -162,8 +162,99 @@ a:hover {
   background-color: rgba(0, 255, 0, 0.1);
 }
 
-
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300FF00' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+
+.btn-green-glow {
+  background-color: #00FF00;
+  color: #000;
+  border: 1px solid #00FF00;
+  font-size: 18px;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00FF00;
+  box-shadow: 0 0 8px #00FF00;
+  transition: all 0.3s ease;
+}
+
+.btn-green-glow:hover {
+  background-color: #32CD32;
+  border-color: #32CD32;
+  color: #000;
+  text-shadow: 0 0 10px #32CD32;
+  box-shadow: 0 0 12px #32CD32;
+}
+
+/* Status badge for Enabled/Disabled */
+.status-green {
+  background-color: #00FF00;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 0 6px #00FF00;
+  margin-top: 5px;
+}
+
+/* Disabled style */
+.status-green.disabled {
+  background-color: darkred;
+  color: white;
+  box-shadow: 0 0 6px darkred;
+}
+
+/* Bigger text if needed */
+.bigger-text {
+  font-size: 18px;
+}
+
+.bigger-text2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Highlight current user */
+.highlighted-user {
+  border: 2px solid #00FF00;
+  box-shadow: 0 0 10px #00FF00;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #001100;
+  margin-bottom: 10px;
+}
+
+.btn-neon-green {
+    font-size: 18px;
+    background-color: #39FF14;  /* Neon Green */
+    color: #000;                /* Black text */
+    border-color: #39FF14;
+    font-weight: bold;
+    text-shadow: 0 0 5px #39FF14;
+    transition: background-color 0.3s ease;
+}
+.btn-neon-green:hover {
+    background-color: #2CD400;  /* Slightly darker neon green on hover */
+    border-color: #2CD400;
+    color: #000;
+}
+
+.status-neon-green {
+    font-size: 18px;
+    background-color: #39FF14;  /* Neon Green */
+    color: #000;                /* Black text */
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-shadow: 0 0 8px #39FF14;
+    display: inline-block;
+}
+.user-email h4 {
+    color: #39FF14;  /* Neon Green text for emails */
+    font-weight: 700;
+    text-shadow: 0 0 8px #39FF14;
+}

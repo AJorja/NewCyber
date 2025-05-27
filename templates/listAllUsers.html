@@ -1,61 +1,86 @@
 {% extends 'base.html' %}
 
 {% block rowOneContent %}
-
+<h2 class="text-center my-4" style="color:#39FF14; text-shadow: 0 0 8px #39FF14;">All Active Users</h2>
 {% endblock %}
 
 {% block rowTwoColOneContent %}
-<div class="container-fluid">
-    {% for user in users %}
-        <div class="row user-row">
-            <div class="col-md-12 user-email"><h4>{{ user.email_address }}</h4></div>
-        </div>
-    {% endfor %}
+<div class="container-fluid" style="background-color: #000; padding: 20px; border-radius: 8px;">
+  {% for user in users %}
+  <div class="user-card d-flex align-items-center justify-content-between mb-3 p-3" 
+       style="background-color: #111; border-radius: 10px; box-shadow: 0 0 8px #39FF14;">
+    
+    <div class="user-email" style="flex: 2;">
+      <h4 style="color:#39FF14; font-weight: 700; margin: 0; text-shadow: 0 0 8px #39FF14;">
+        {{ user.email_address }}
+      </h4>
+    </div>
+    
+    <div class="user-actions d-flex gap-2" style="flex: 2; justify-content: center;">
+      <a href="{{ url_for('reset_user_password', userid=user.id) }}" class="btn btn-neon-green btn-sm">
+        Reset Password
+      </a>
+      <a href="{{ url_for('user_enable', userid=user.id) }}" class="btn btn-neon-green btn-sm">
+        Enable/Disable
+      </a>
+    </div>
+    
+    <div class="user-status" style="flex: 1; text-align: right;">
+      {% if user.active %}
+      <span class="status-neon-green">Enabled</span>
+      {% else %}
+      <span class="status-neon-green" style="background-color: #222; color: #39FF14; text-shadow: none;">Disabled</span>
+      {% endif %}
+    </div>
+
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
 
 {% block rowTwoColTwoContent %}
-<style>
-    .user-row h4 {
-        font-size: 25px; /* Adjust font size for individual headers */
-    }
-    .btn-light-pink {
-        font-size: 25px;
-        background-color: #FFC0CB; /* Light pink color */
-        color: #fff; /* Text color */
-        border-color: #FFC0CB; /* Border color */
-    }
-    .btn-light-pink:hover {
-        font-size: 25px;
-        background-color: #FFB6C1; /* Light pink color on hover */
-        border-color: #FFB6C1; /* Border color on hover */
-    }
-    .status-light-pink {
-        font-size: 28px;
-        background-color: #FFC0CB; /* Pink background color for status */
-        color: #FFF; /* White text color for status */
-        padding: 5px 10px; /* Add padding for spacing */
-        border-radius: 5px; /* Add border radius for rounded corners */
-        display: inline-block; /* Ensure background color is only as long as the text */
-    }
-</style>
-<div class="container-fluid">
-    {% for user in users %}
-        <div class="row user-row">
-            <div class="col-md-12 user-reset"><h4><a href="/reset_password/{{ user.id }}" class="btn btn-light-pink">Reset Password</a></h4></div>
-            <div class="col-md-12 user-enable-disable"><h4><a href="/admin/user_enable/{{ user.id }}" class="btn btn-light-pink">Enable/Disable Account</a></h4></div>
-            <div class="col-md-12 user-status">
-                {% if user.active %}
-                    <h4 class="status-light-pink">Enabled</h4>
-                {% else %}
-                    <h4 class="status-light-pink">Disabled</h4>
-                {% endif %}
-            </div>
-        </div>
-    {% endfor %}
-</div>
+<!-- Optional additional content can go here -->
 {% endblock %}
 
 {% block rowThreeContent %}
-  <div class="footerText"><h4>Copyright 2024.</h4></div>
+<div class="footerText" style="color:#39FF14; text-align:center; padding:10px 0; text-shadow: 0 0 8px #39FF14;">
+  <h4>Copyright 2024.</h4>
+</div>
 {% endblock %}
+
+<style>
+.btn-neon-green {
+    font-size: 14px;
+    background-color: #39FF14;
+    color: #000;
+    border-color: #39FF14;
+    font-weight: 700;
+    text-shadow: 0 0 5px #39FF14;
+    transition: background-color 0.3s ease;
+    padding: 5px 12px;
+}
+.btn-neon-green:hover {
+    background-color: #2CD400;
+    border-color: #2CD400;
+    color: #000;
+}
+.status-neon-green {
+    font-size: 16px;
+    background-color: #39FF14;
+    color: #000;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-shadow: 0 0 8px #39FF14;
+    display: inline-block;
+}
+.user-email h4 {
+    color: #39FF14;
+    font-weight: 700;
+    text-shadow: 0 0 8px #39FF14;
+    margin-bottom: 0;
+}
+.user-card a {
+    white-space: nowrap;
+}
+</style>

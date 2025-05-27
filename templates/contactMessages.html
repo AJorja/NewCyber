@@ -1,42 +1,62 @@
 {% extends "base.html" %}
 
 {% block rowOneContent %}
-<div class="footerText bigger-text2">User Contact Messages</div>
+<div class="footerText bigger-text2 text-center" style="color:#39FF14; text-shadow: 0 0 8px #39FF14; margin-bottom: 1rem;">
+  User Contact Messages
+</div>
 {% endblock %}
 
 {% block rowTwoColOneContent %}
-    <div class="footerText bigger-text">{{ name }}</div>
+<div class="footerText bigger-text text-center" style="color:#39FF14; margin-bottom: 1rem;">
+  {{ name }}
+</div>
 {% endblock %}
 
 {% block rowTwoColTwoContent %}
-<div class="container-fluid">
-    {% for message in messages %}
-    <div class="row message-row">
-        <div class="col-2 bigger-text">{{ message.name }}</div>
-        <div class="col-5 bigger-text">{{ message.message }}</div>
-        <div class="col-3 bigger-text">{{ message.dateSubmitted }}</div>
+<div class="container-fluid" style="background-color: #000; padding: 20px; border-radius: 8px;">
+  {% for message in messages %}
+  <div class="message-card d-flex flex-wrap align-items-center justify-content-between mb-3 p-3"
+       style="background-color: #111; border-radius: 10px; box-shadow: 0 0 8px #39FF14;">
+       
+    <div class="message-name" style="flex: 0 0 140px; color:#39FF14; font-weight: 700; text-shadow: 0 0 6px #39FF14;">
+      {{ message.name }}
     </div>
-    {% endfor %}
+
+    <div class="message-email" style="flex: 1 1 250px; color:#39FF14; font-style: italic; text-shadow: 0 0 4px #39FF14; word-break: break-word;">
+      {{ message.email }}
+    </div>
+
+    <div class="message-text" style="flex: 2 1 300px; color:#39FF14; word-wrap: break-word;">
+      {{ message.message }}
+    </div>
+
+    <div class="message-date text-end" style="flex: 0 0 140px; color:#39FF14; font-weight: 600;">
+      {{ message.dateSubmitted }}
+    </div>
+
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
 
-{% block rowTwoColThreeContent %}
-<div class="container-fluid">
-    {% for message in messages %}
-    <div class="row message-row">
-        <div class="col-2 bigger-text">{{ message.email }}</div>
-    </div>
-    {% endfor %}
-</div>
-{% endblock %}
 
 {% block rowThreeContent %}
-<div>Copyright 2024.</div>
+<div class="footerText text-center" style="color:#39FF14; padding: 10px 0; text-shadow: 0 0 8px #39FF14;">
+  Copyright 2024.
+</div>
 {% endblock %}
 
-
-
-
-
-
-
+<style>
+  .bigger-text2 {
+    font-size: 2.5rem;
+  }
+  .bigger-text {
+    font-size: 1.25rem;
+  }
+  .message-card {
+    transition: box-shadow 0.3s ease;
+  }
+  .message-card:hover {
+    box-shadow: 0 0 15px #39FF14;
+  }
+</style>
