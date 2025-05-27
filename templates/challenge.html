@@ -21,11 +21,15 @@
 
 <form method="POST" action="{{ url_for('challenge_page', challenge_id=challenge.id) }}" style="margin-top: 1em;">
   <label for="flag">Submit Flag:</label><br>
+   <small style="color: #39ff14; font-style: italic; display: block; margin-top: 5px;">
+  Please submit the flag in the format: CTF{flag}
+  </small>
   <input 
     type="text" 
     id="flag" 
     name="flag" 
     required 
+    placeholder="CTF{your_flag_here}"
     style="padding: 8px; width: 250px; border-radius: 4px; border: 1px solid #39ff14; background-color: #000; color: #39ff14;"
   >
   <button 
