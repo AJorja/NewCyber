@@ -25,6 +25,7 @@ class Challenge(db.Model):
     flag = db.Column(db.String(255))
     points = db.Column(db.Integer, default=100)
     file_url = db.Column(db.String(255))
+    learning_outcomes = db.Column(db.Text)  # Will store learning outcomes as a JSON string or plain text
 
 class ChallengeCompletion(db.Model):
     id = db.Column(db.Integer, primary_key=True)

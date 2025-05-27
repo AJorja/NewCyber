@@ -4,25 +4,41 @@
 <h2>{{ challenge.challengeTitle }}</h2>
 <p>{{ challenge.description }}</p>
 
+{% if learning_outcomes %}
+  <h3 style="color: #00FF00; font-family: monospace; font-weight: bold; margin-top: 30px;">Learning Outcomes</h3>
+  <ul style="color: #39ff14; font-family: monospace;">
+    {% for outcome in learning_outcomes %}
+      <li>{{ outcome }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 {% if challenge.hint %}
   <div class="alert-green-black" style="padding: 10px; margin-bottom: 15px; border-radius: 5px;">
     <strong>Hint:</strong> {{ challenge.hint }}
   </div>
 {% endif %}
 
+{% if challenge.learning_outcomes %}
+  <div class="alert-green-black" style="padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+    <strong>Learning Outcomes:</strong> {{ challenge.learning_outcomes|safe }}
+  </div>
+{% endif %}
+
+
 {% if challenge.file_url %}
 <div class="alert-green-black" style="padding: 10px; border-radius: 5px; margin-bottom: 15px;">
   <strong>File:</strong> 
-  <a href="{{ challenge.file_url }}" target="_blank" rel="noopener noreferrer" style="color: #00FF00; text-shadow: 0 0 5px #00ff00;">
-    Download file
-  </a>
+ <a href="{{ challenge.file_url }}" download target="_blank" rel="noopener noreferrer" style="color: #00FF00; text-shadow: 0 0 5px #00ff00;">
+  Download file
+</a>
 </div>
 {% endif %}
 
 <form method="POST" action="{{ url_for('challenge_page', challenge_id=challenge.id) }}" style="margin-top: 1em;">
   <label for="flag">Submit Flag:</label><br>
-   <small style="color: #39ff14; font-style: italic; display: block; margin-top: 5px;">
-  Please submit the flag in the format: CTF{flag}
+  <small style="color: #39ff14; font-style: italic; display: block; margin-top: 5px;">
+    Please submit the flag in the format: CTF{flag}
   </small>
   <input 
     type="text" 
@@ -41,7 +57,4 @@
   </button>
 </form>
 
-{% if message %}
-  <p style="margin-top: 1em; color: #39ff14; text-shadow: 0 0 3px #39ff14;">{{ message }}</p>
-{% endif %}
 {% endblock %}

@@ -1,0 +1,46 @@
+# Use an official Ubuntu base image
+FROM ubuntu:22.04
+
+# Update package lists and install necessary packages:
+# - openssh-server: to allow SSH access
+# - sudo: for granting administrative privileges to the user
+# - tree: for displaying the folder structure in a tree format (optional but useful)
+# - nano: a simple text editor (useful for editing inside the container)
+RUN apt-get update && \
+    apt-get install -y openssh-server sudo tree nano
+
+# Create a new user 'player', set up their home directory, 
+# and set their password to 'password123'. 
+# The '/var/run/sshd' directory is created to ensure the SSH server runs.
+RUN useradd -ms /bin/bash player && \
+    echo 'player:password123' | chpasswd && \
+    mkdir /var/run/sshd
+
+# Create a simple file environment with basic files inside the player's home directory.
+# - We have a few files in projects, reports, docs, etc., but nothing hidden.
+RUN mkdir -p /home/player/{projects,reports,tmp,docs/special,personal,downloads} && \
+    echo "My notes" > /home/player/projects/notes.md && \
+    echo "Q1 Report" > /home/player/reports/q1.txt && \
+    echo "delete me later" > /home/player/tmp/test.tmp && \
+    echo "Just a diary entry" > /home/player/docs/personal/journal.txt && \
+    echo "install script placeholder" > /home/player/downloads/setup.sh
+
+# Create a misleading 'flag.txt' with a message that says "Tricked you!".
+# This will be in the home directory to mislead the players.
+RUN echo "Tricked you!" > /home/player/flag.txt
+
+# Create the actual flag in Base64 encoding and store it in a less obvious location.
+# The flag CTF{operation_greenwave} will be encoded in Base64 as 'Q1RGe29wZXJhdGlvbl9ncmVlbndhdmV9'.
+RUN echo "Q1RGe29wZXJhdGlvbl9ncmVlbndhdmV9" > /home/player/docs/special/flag.enc
+
+# Set the correct ownership for all files and directories.
+# Ensures the 'player' user can access and modify the files as needed.
+RUN chown -R player:player /home/player
+
+# Expose the SSH port (port 22) to allow external SSH connections.
+# This will let players SSH into the container to explore the file system.
+EXPOSE 22
+
+# Set the default command to run when the container starts:
+# - Start the SSH service ('sshd') in the foreground with the '-D' flag.
+CMD ["/usr/sbin/sshd", "-D"]
