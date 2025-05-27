@@ -124,6 +124,9 @@ def challenge_page(challenge_id):
 
     return render_template("challenge.html", challenge=challenge, message=message, user=current_user)
 
+@app.route('/tutorials')
+def tutorials():
+    return render_template('tutorials.html', title="Tutorials", user=current_user)
 
 
 

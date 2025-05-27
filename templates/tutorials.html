@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block rowOneContent %}
+<h1 style="color: #00FF00; font-family: monospace; font-weight: bold;">Challenge Tutorials</h1>
+<p style="color: white; font-family: monospace;">
+  Below are helpful hints and strategies to get you started on each challenge.
+</p>
+
+<div class="card mb-4" style="background-color: #111; border: 1px solid #00FF00;">
+  <div class="card-body">
+    <h3 class="card-title" style="color: #00FF00; font-family: monospace;">Open Sesame</h3>
+    <p class="card-text" style="color: white; font-family: monospace;">
+      - Start by examining the script’s permissions. Can you run it? If not, think about how to change that.<br>
+      - When executing, watch for error messages—they often hint at missing dependencies.<br>
+      - Consider how to install or simulate missing services like MySQL.<br>
+      - The script might have syntax or logic issues; review it carefully and test small parts.<br>
+      - Remember, the flag could be hidden inside the script or output files after it runs.
+    </p>
+       <a href="https://docs.google.com/document/d/YOUR_DOC_ID_HERE" target="_blank" style="color:#00FF00; font-family: monospace;">
+      Learn More »
+    </a>
+  </div>
+</div>
+
+<div class="card mb-4" style="background-color: #111; border: 1px solid #00FF00;">
+  <div class="card-body">
+    <h3 class="card-title" style="color: #00FF00; font-family: monospace;">Traffic Jammed</h3>
+    <p class="card-text" style="color: white; font-family: monospace;">
+      - Use your browser’s developer tools to inspect page elements and source code.<br>
+      - Look carefully for any hidden comments, scripts, or files that might contain credentials.<br>
+      - Once you find credentials, SSH into the container to explore the environment.<br>
+      - Search for files or directories that could hold the flag.<br>
+      - The flag may be encoded (e.g., base64), so be ready to decode common encodings.<br>
+      - Remember to check file permissions and think like an attacker trying to find hidden info.
+    </p>
+       <a href="https://docs.google.com/document/d/YOUR_DOC_ID_HERE" target="_blank" style="color:#00FF00; font-family: monospace;">
+      Learn More »
+    </a>
+  </div>
+</div>
+
+<div class="card mb-4" style="background-color: #111; border: 1px solid #00FF00;">
+  <div class="card-body">
+    <h3 class="card-title" style="color: #00FF00; font-family: monospace;">Turbine Takeover</h3>
+    <p class="card-text" style="color: white; font-family: monospace;">
+      - Begin by extracting the zip file and exploring its folder structure.<br>
+      - Pay attention to file names and sizes—some files might be distractions.<br>
+      - Look for clues that indicate which files contain valuable information.<br>
+      - Use common decryption or decoding techniques on suspicious files.<br>
+      - Organize your findings logically to piece together how the turbine is controlled.<br>
+      - Persistence and thoroughness are key—don’t overlook small details.
+    </p>
+       <a href="https://docs.google.com/document/d/YOUR_DOC_ID_HERE" target="_blank" style="color:#00FF00; font-family: monospace;">
+      Learn More »
+    </a>
+  </div>
+</div>
+
+{% endblock %}
